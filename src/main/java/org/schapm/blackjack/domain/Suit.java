@@ -6,5 +6,5 @@ package org.schapm.blackjack.domain;
  */
 
 public enum Suit {
-
+    DIAMOND, HEART, CLUB, SPADE
 }
