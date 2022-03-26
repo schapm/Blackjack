@@ -73,6 +73,14 @@ public class Game {
         }
     }
 
+    private void printHands() {
+        System.out.println("\n" + dealer.getName() + ":");
+        dealerHand.print();
+
+        System.out.println("\n" + player.getName() + ":");
+        playerHand.print();
+    }
+
     private String validateUserInput(String regex, String userInput) {
         if (!userInput.matches(regex)) {
             while (true) {
