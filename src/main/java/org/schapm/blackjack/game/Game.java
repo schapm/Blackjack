@@ -41,6 +41,23 @@ public class Game {
 
             // GAME_START------------------------------------------------------>
             while (gameState == GameState.GAME_START) {
+                // Reset
+                deck = new Deck();
+                deck.shuffle();
+                playerHand = new Hand();
+                dealerHand = new Hand();
+
+                // Start game
+                System.out.println("\n=================");
+                System.out.println("Starting New Hand");
+                System.out.println("=================");
+                System.out.println(player.getName() + "'s bankroll is £" + player.getBankroll().getBalance());
+                System.out.println(dealer.getName() + "'s bankroll is £" + dealer.getBankroll().getBalance());
+
+                // Place bet
+                System.out.println("\n" + player.getName() + "'s Stake");
+                System.out.print("> ");
+                bet = new Bet(player, dealer, Integer.valueOf(validateUserInput("[0-9]+", scanner.nextLine())));
 
             }
 
@@ -54,6 +71,22 @@ public class Game {
 
             }
         }
+    }
+
+    private String validateUserInput(String regex, String userInput) {
+        if (!userInput.matches(regex)) {
+            while (true) {
+                System.out.println("\nIncorrect option, try again");
+                System.out.print("> ");
+                String answer = scanner.nextLine().trim();
+
+                if (answer.matches(regex)) {
+                    return answer;
+                }
+            }
+        }
+
+        return userInput;
     }
 
 }
