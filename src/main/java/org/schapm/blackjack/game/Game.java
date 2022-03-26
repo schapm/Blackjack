@@ -63,12 +63,20 @@ public class Game {
 
             // GAME_END ------------------------------------------------------->
             while (gameState == GameState.GAME_END) {
+                System.out.println("\nPlay again? (y/n)");
+                System.out.print("> ");
 
+                if (validateUserInput("y|n", scanner.nextLine()).equals("y")) {
+                    gameState = GameState.GAME_START;
+                } else {
+                    gameState = GameState.STOP;
+                }
             }
 
             // STOP ----------------------------------------------------------->
             if (gameState == GameState.STOP) {
 
+                break;
             }
         }
     }
