@@ -6,5 +6,5 @@ package org.schapm.blackjack.game;
  */
 
 public enum GameState {
-
+    STOP, GAME_START, GAME_END
 }
