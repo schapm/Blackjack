@@ -59,6 +59,19 @@ public class Game {
                 System.out.print("> ");
                 bet = new Bet(player, dealer, Integer.valueOf(validateUserInput("[0-9]+", scanner.nextLine())));
 
+                // Deal cards
+                playerHand.add(deck.drawCard());
+                playerHand.add(deck.drawCard());
+
+                dealerHand.add(deck.drawCard());
+                dealerHand.add(deck.drawCard(true)); // Card hidden
+
+                printHands();
+
+                playerTurn();
+                dealerTurn();
+
+                gameState = GameState.GAME_END;
             }
 
             // GAME_END ------------------------------------------------------->
@@ -79,6 +92,14 @@ public class Game {
                 break;
             }
         }
+    }
+
+    private void playerTurn() {
+        
+    }
+
+    private void dealerTurn() {
+
     }
 
     private void printHands() {
