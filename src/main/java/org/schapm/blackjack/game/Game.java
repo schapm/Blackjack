@@ -95,7 +95,26 @@ public class Game {
     }
 
     private void playerTurn() {
-        
+        while (true) {
+            if (playerHand.isBust()) {
+                System.out.println("\n" + player.getName().toUpperCase() + " IS BUST!");
+                gameState = GameState.GAME_END;
+
+                break;
+            }
+
+            System.out.println("\nHit or stand, " + player.getName() + "? (h/s)");
+            System.out.print("> ");
+
+            if (validateUserInput("h|s", scanner.nextLine()).equals("h")) {
+                playerHand.add(deck.drawCard());
+
+                System.out.println("\n" + player.getName() + ":");
+                playerHand.print();
+            } else {
+                break;
+            }
+        }
     }
 
     private void dealerTurn() {
