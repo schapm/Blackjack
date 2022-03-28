@@ -60,6 +60,18 @@ public class Game {
                 System.out.print("> ");
                 bet = new Bet(player, dealer, Integer.valueOf(validateUserInput("[0-9]+", scanner.nextLine())));
 
+                if (!bet.placeBet()) {
+                    if (bet.getBalanceNotEnough().equals(player)) {
+                        System.out.println("You don't have enough cash. Come back later.");
+                    } else {
+                        System.out.println(dealer.getName() + " doesn't have enough cash to settle your bet. Come back later.");
+                    }
+
+                    gameState = GameState.STOP;
+
+                    break;
+                }
+
                 // Deal cards
                 playerHand.add(deck.drawCard());
                 playerHand.add(deck.drawCard());
