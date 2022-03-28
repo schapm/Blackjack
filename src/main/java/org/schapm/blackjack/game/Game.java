@@ -5,6 +5,7 @@ import org.schapm.blackjack.domain.Deck;
 import org.schapm.blackjack.domain.Hand;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -118,7 +119,37 @@ public class Game {
     }
 
     private void dealerTurn() {
+        // Set dealer's card visible & print hand
+        dealerHand.setDealerCardVisible();
+        System.out.println("\n" + dealer.getName() + ":");
+        dealerHand.print();
 
+        while (true) {
+            // Wait a short time to improve gameplay
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException ie) {
+                System.out.println("Error: " + ie.getMessage());
+            }
+
+            if (dealerHand.isBust()) {
+                System.out.println("\n" + dealer.getName().toUpperCase() + " IS BUST!");
+                gameState = GameState.GAME_END;
+
+                break;
+            }
+
+            // Dealer stands on soft 16
+            if (dealerHand.handValue() < 16) {
+                dealerHand.add(deck.drawCard());
+
+                System.out.println("\n" + dealer.getName() + ":");
+                dealerHand.print();
+            } else {
+
+                break;
+            }
+        }
     }
 
     private void printHands() {
