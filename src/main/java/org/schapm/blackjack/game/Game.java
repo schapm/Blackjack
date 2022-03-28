@@ -77,6 +77,8 @@ public class Game {
 
             // GAME_END ------------------------------------------------------->
             while (gameState == GameState.GAME_END) {
+                whoWonLostOrDraw();
+                
                 System.out.println("\nPlay again? (y/n)");
                 System.out.print("> ");
 
@@ -150,6 +152,21 @@ public class Game {
                 break;
             }
         }
+    }
+
+    private void whoWonLostOrDraw() {
+        int compareHands = playerHand.compareTo(dealerHand);
+        if (compareHands > 0) {
+            System.out.println("\nResult: " + player.getName() + " Wins!");
+            bet.win();
+        } else if (compareHands == 0) {
+            System.out.println("\nResult: Draw!");
+            bet.draw();
+        } else {
+            System.out.println("\nResult: " + player.getName() + " Lost!"); // Don't need to do anything else
+        }
+
+        gameState = GameState.GAME_END;
     }
 
     private void printHands() {
