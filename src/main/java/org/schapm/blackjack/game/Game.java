@@ -69,6 +69,27 @@ public class Game {
 
                 printHands();
 
+                // Check for initial Blackjack hands
+                if (playerHand.isBlackjack()) {
+                    System.out.println("\n" + player.getName() + " has Blackjack!");
+                    gameState = GameState.GAME_END;
+
+                    if (dealerHand.isBlackjack()) {
+                        System.out.println("\n" + player.getName() + " has Blackjack!");
+                    }
+
+                    break;
+                } else if (dealerHand.isBlackjack()) {
+                    System.out.println("\n" + dealer.getName() + " has Blackjack!");
+                    gameState = GameState.GAME_END;
+
+                    if (playerHand.isBlackjack()) {
+                        System.out.println("\n" + player.getName() + " has Blackjack!");
+                    }
+
+                    break;
+                }
+
                 playerTurn();
                 dealerTurn();
 
@@ -78,7 +99,7 @@ public class Game {
             // GAME_END ------------------------------------------------------->
             while (gameState == GameState.GAME_END) {
                 whoWonLostOrDraw();
-                
+
                 System.out.println("\nPlay again? (y/n)");
                 System.out.print("> ");
 
