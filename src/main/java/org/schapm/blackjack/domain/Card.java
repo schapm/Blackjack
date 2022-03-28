@@ -1,5 +1,7 @@
 package org.schapm.blackjack.domain;
 
+import org.schapm.blackjack.ui.Text;
+
 /**
  *
  * @author schapm
@@ -41,7 +43,18 @@ public class Card {
                 break;
         }
 
-        return cardValue + " " + suit;
+        switch (suit) {
+            case DIAMOND:
+                return cardValue + "\t" + Text.colorText(Text.UNICODE_BLACK_DIAMOND, Text.ANSI_RED);
+            case HEART:
+                return cardValue + "\t" + Text.colorText(Text.UNICODE_BLACK_HEART, Text.ANSI_RED);
+            case SPADE:
+                return cardValue + "\t" + Text.UNICODE_BLACK_SPADE;
+            case CLUB:
+                return cardValue + "\t" + Text.UNICODE_BLACK_CLUB;
+            default:
+                return cardValue + "\t" + suit;
+        }
     }
 
     public boolean isHidden() {
