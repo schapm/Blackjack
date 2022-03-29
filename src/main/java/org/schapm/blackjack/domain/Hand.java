@@ -30,10 +30,6 @@ public class Hand implements Comparable<Hand> {
         });
     }
 
-    public List<Card> getHand() {
-        return hand;
-    }
-
     public int handValue() {
         // Adjust for real values
         boolean aceFound = false;
