@@ -34,10 +34,13 @@ public class Deck {
     }
 
     public Card drawCard(boolean hidden) {
-        Card card = drawCard();
-        card.setHidden(true);
-
-        return card;
+        if (hidden) {
+            Card card = drawCard();
+            card.setHidden(true);
+            return card;
+        } else {
+            return drawCard();
+        }
     }
 
     public void shuffle() {
