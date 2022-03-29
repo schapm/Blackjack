@@ -69,4 +69,8 @@ public class Card {
         return this.value;
     }
 
+    public Suit getSuit() {
+        return this.suit;
+    }
+
 }

@@ -57,4 +57,10 @@ public class Deck {
         cards.remove(card);
     }
 
+    public void print() {
+        cards.forEach((card) -> {
+            System.out.println(card.toString());
+        });
+    }
+
 }
