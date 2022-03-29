@@ -45,10 +45,6 @@ public class Bet {
         dealer.getBankroll().remove(betSize);
     }
 
-    public int getBet() {
-        return this.betSize;
-    }
-
     public Player getBalanceNotEnough() {
         // Who doesn't have enough balance to settle the bet
         if (player.getBankroll().getBalance() - betSize < 0) {
